@@ -127,14 +127,14 @@ KERNEL_MODULES_OUT ?= $(PRODUCT_OUT)/$(KERNEL_MODULES_INSTALL)/lib/modules
 TARGET_PREBUILT_KERNEL := $(TARGET_PREBUILT_INT_KERNEL)
 
 BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_MODULES_OUT)/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/asoc/codecs/bolero/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/asoc/codecs/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/asoc/codecs/wcd938x/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/asoc/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/dsp/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/dsp/codecs/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/ipc/*.ko)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard techpack/audio/soc/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/asoc/codecs/bolero/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/asoc/codecs/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/asoc/codecs/wcd938x/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/asoc/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/dsp/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/dsp/codecs/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/ipc/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(KERNEL_OUT)/techpack/audio/soc/*.ko)
 
 
 
