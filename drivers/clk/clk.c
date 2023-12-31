@@ -53,7 +53,7 @@ static LIST_HEAD(clk_handoff_vdd_list);
 static bool vdd_class_handoff_completed;
 static DEFINE_MUTEX(vdd_class_list_lock);
 
-static struct hlist_head *all_lists[] = {
+static const struct hlist_head *all_lists[] = {
 	&clk_root_list,
 	&clk_orphan_list,
 	NULL,
