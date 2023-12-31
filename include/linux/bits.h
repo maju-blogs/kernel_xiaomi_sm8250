@@ -14,7 +14,9 @@
 #else
 #include <asm/bitsperlong.h>
 
-#define BIT(nr)			(UL(1) << (nr))
+#ifndef BIT(nr)
+#define BIT(nr)			(1UL << (nr))
+#endif
 #define BIT_ULL(nr)		(ULL(1) << (nr))
 #define BIT_MASK(nr)		(UL(1) << ((nr) % BITS_PER_LONG))
 #endif
