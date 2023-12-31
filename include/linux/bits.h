@@ -14,7 +14,7 @@
 #else
 #include <asm/bitsperlong.h>
 
-#ifndef BIT(nr)
+#ifndef BIT
 #define BIT(nr)			(1UL << (nr))
 #endif
 #define BIT_ULL(nr)		(ULL(1) << (nr))
