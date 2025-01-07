@@ -138,6 +138,24 @@ static bool is_usb_available(struct step_chg_info *chip)
 	return true;
 }
 
+static int smb5_probe(struct platform_device *pdev)
+{
+    struct smb5 *chip;
+    struct smb_charger *chg;
+    int rc;
+    
+    // ... 其他初始化代码 ...
+    
+    chg = &chip->chg;
+    
+    // 默认启用自动开机功能
+    chg->auto_power_on = true;
+    
+    // ... 其他初始化代码 ...
+    
+    return 0;
+} 
+
 static bool is_input_present(struct step_chg_info *chip)
 {
 	int rc = 0, input_present = 0;
