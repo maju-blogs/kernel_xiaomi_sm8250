@@ -107,6 +107,36 @@ int smblib_get_iio_channel(struct smb_charger *chg, const char *propname,
 	return rc;
 }
 
+static int smblib_handle_usb_plugin(struct smb_charger *chg)
+{
+    int rc;
+    bool rising;
+    u8 stat;
+
+    rc = smblib_read(chg, USBIN_BASE + INT_RT_STS_OFFSET, &stat);
+    if (rc < 0) {
+        smblib_err(chg, "Couldn't read USB_INT_RT_STS rc=%d\n", rc);
+        return rc;
+    }
+
+    rising = (bool)(stat & USBIN_PLUGIN_RT_STS_BIT);
+    
+    // 检测到充电器插入
+    if (rising) {
+        // 如果系统当前处于关机状态且启用了自动开机
+        if (chg->auto_power_on && !qpnp_pon_is_system_on()) {
+            // 调用开机函数
+            qpnp_pon_system_pwr_on();
+            smblib_dbg(chg, PR_MISC, "USB插入，触发自动开机\n");
+        }
+    }
+
+    smblib_dbg(chg, PR_INTERRUPT, "IRQ: %s; %s\n",
+           __func__, rising ? "rising" : "falling");
+
+    return 0;
+} 
+
 #define DIV_FACTOR_MICRO_V_I	1
 #define DIV_FACTOR_MILI_V_I	1000
 #define DIV_FACTOR_DECIDEGC	100
