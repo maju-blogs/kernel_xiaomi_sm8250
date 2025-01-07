@@ -564,6 +564,10 @@ struct smb_iio {
 };
 
 struct smb_charger {
+	bool power_good_en;
+	bool auto_power_on;
+	struct device *dev;
+	struct pmic_revid_data *pmic_rev_id;
 	struct device		*dev;
 	char			*name;
 	struct regmap		*regmap;
